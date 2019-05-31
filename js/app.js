@@ -1,34 +1,3 @@
-/*
-
-
-intro
-
-presentacion
-
-
-
-
-
-filtrado:
-- obtener el numero otal de calles
-- y una distribucion por barrios?
-
-
-mapa:
-ok
-- filtrado
-- heighlight selected (seleccionado de la tabla o bien clickado)
-- popup -> hacer algo guapo...
-
-
-tabla:
-- al seleccionar un row destacar en el mapa con doble click
-- es posible poner filtro?
-- export to excel / csv
-
-*/
-
-
 var carrers = 'data/carrers.geojson';
 var COLS = 'data/columns.json'
 var fcarrers;
@@ -76,7 +45,6 @@ var syncview = false;
 function style(feat, resolution) {
 	var st;
 	if (FEATURES.indexOf(feat.values_.c_carrer_id) == -1) {
-		//not filtered
 		st = [new ol.style.Style({
 			zIndex: 1,
 			stroke: new ol.style.Stroke({
@@ -90,7 +58,6 @@ function style(feat, resolution) {
 			}),
 		}), ]
 	} else {
-		//highlighted
 		st = [new ol.style.Style({
 				zIndex: 2,
 				stroke: new ol.style.Stroke({
@@ -118,7 +85,6 @@ function style(feat, resolution) {
 }
 
 function selectStyle(feat, resolution) {
-	//estilo neutro, estilo filtrado, estilo seleccionado
 	var st;
 
 	st = [new ol.style.Style({
@@ -170,7 +136,6 @@ function selectStyle(feat, resolution) {
 			}
 		}),
 		 ]
-
 	return st
 }
 
@@ -185,12 +150,7 @@ function scroll() {
 	});
 }
 
-
-function doBar() {}
-
-
 function getFeatures() {
-	//actualiza la lista de todas las features
 	FEATURES_TOT = [];
 	s = window.layer.getSource().getFeatures();
 	$.each(s, function (i, ii) {
@@ -201,12 +161,11 @@ function getFeatures() {
 	filtersid()
 }
 
-
 function filtersid() {
 	where = getFilterSql();
 	FEATURES = []
 
-	if (where != '') { //where != ''
+	if (where != '') {
 		sql = 'SELECT c_carrer_id c FROM ? ' + where;
 		r = alasql(sql, [FEATURES_TOT]);
 		$.each(r, function (x, xx) {
@@ -235,7 +194,7 @@ function filtersid() {
 
 
 function showFilters() {
-	if ($('#b_filtra').hasClass('active')) { //apaga
+	if ($('#b_filtra').hasClass('active')) {
 
 		$('#b_filtra').removeClass('active');
 		$('#filters .row').hide();
@@ -251,14 +210,11 @@ function showFilters() {
 		$('#filters .row').show();
 		h = $('#filters').height();
 
-		//$('#map').height($(window).height() - $('#filters').height());
-		//window.map.updateSize()
-
 		$('#flexible').removeClass('inactive');
 		$('#flexible').css('top', $($('section')[p_m]).offset().top + h - 40)
 		$('#flexible').css('display', 'block')
 
-		$.scrollify.update(); //requiere un tiempo de refresco..
+		$.scrollify.update();
 
 		setTimeout(function () {
 			$.scrollify.move(p_f)
@@ -386,8 +342,6 @@ function refilter() {
 	r = alasql(sql, [tt]);
 	$('#n_carrers').html(r[0].c + ' carrers')
 
-	//set bounds
-
 }
 
 function map() {
@@ -412,10 +366,6 @@ function map() {
 		}),
 	});
 
-	//	window.map.addControl(new ol.control.Zoom({
-	//		target: 'zoom-map'
-	//	}))
-
 	var slider = new ol.control.ZoomSlider()
 	slider.setTarget('zoom-map')
 	window.map.addControl(slider)
@@ -428,7 +378,6 @@ function map() {
 		opacity: 1,
 	});
 
-	//calles
 	window.layer = new ol.layer.Vector({
 		style: style,
 		source: new ol.source.Vector({
@@ -462,14 +411,12 @@ function map() {
 	var spot = new ol.geom.Polygon([bounds]);
 	spotLayer.getSource().addFeature(new ol.Feature(spot));
 
-	//selections
 	window.selectLayerSource = new ol.source.Vector({})
 	window.selectLayer = new ol.layer.Vector({
 		style: selectStyle,
 		source: window.selectLayerSource,
 	});
 
-	//mascara
 	var layerMaskSource = new ol.source.Vector({
 		url: 'data/mask.geojson',
 		format: new ol.format.GeoJSON()
@@ -489,37 +436,13 @@ function map() {
 
 	//add layers
 	map.addLayer(window.blayer);
-	//map.addLayer(window.layerMask);
 	map.addLayer(window.spotLayer);
 	map.addLayer(window.layer);
 	map.addLayer(window.selectLayer);
 
-
-	//	window.layer.on('precompose', function (evt) {
-	//		evt.context.globalCompositeOperation = "multiply";
-	//	});
-	//
-	//	window.layer.on('postcompose', function (evt) {
-	//		evt.context.globalCompositeOperation = "source-over"; // the default
-	//	});
-
-	//	window.spotLayer.on('precompose', function (evt) {
-	//		evt.context.globalCompositeOperation = "saturation";
-	//	});
-
-
-	//	window.spotLayer.on('precompose', function (evt) {
-	//		evt.context.globalCompositeOperation = "lighten"; //exclusion
-	//	});
-	//	window.spotLayer.on('postcompose', function (evt) {
-	//		evt.context.globalCompositeOperation = "source-over"; // the default
-	//	});
-
-
 	getFeatures() //construye un listado con todas los features
 	filter() //inicia el filtro
 	table() //dispara la tabla
-	//search()
 
 	window.map.on('click', showInfo, {
 		hitTolerance: 30
@@ -546,34 +469,8 @@ function buildtxt(features) {
 		return null;
 	} else {
 		var f = features[0].getProperties();
-
-
-		//		var txt = '';
-		//		txt += '<div class="popup-content">'
-		//
-		//		txt += '<div class="popup-s">tipus:</div>'
-		//		txt += '<div class="popup-m">' + f.c_denominacio + '</div>'
-		//
-		//		txt += '<div class="popup-s">nom:</div>'
-		//		txt += '<div class="popup-m">' + f.c_carrer_nom + '</div>'
-		//
-		//		//		txt += '<div class="popup-s">nº:</div>'
-		//		//		txt += '<div class="popup-m">' + f.c_codi_carrer + '</div>'
-		//
-		//		txt += '<div class="popup-s">descripció:</div>'
-		//		txt += '<div class="popup-m">' + f.c_explicacio_historica.slice(0, 100) + '(...)</div>'
-		//		txt += '<div class="popup-s">periode:</div>'
-		//		txt += '<div class="popup-m">' + f.c_periode + '</div>'
-		//		txt += '<div class="popup-s">segle:</div>'
-		//		txt += '<div class="popup-m">' + f.c_segle + '</div>'
-		//		txt += '<div class="popup-m"><a class="identify" title="Identify" onclick="modal(\'' + f.c_carrer_id + '\')"><i class="fa fa-info-circle pop"></i></a></div>'
-		//		txt += '</div>'
-		//		
-
 		var txt = '';
 		txt += '<div class="popup-content">';
-		//		txt += '<div class="popup-s">tipus:</div>';
-
 		txt += '<div class="popup-m"><b>' + f.c_denominacio + ' ' + f.c_nom_carrer_actual + '</b></div>';
 		txt += '<div class="popup-m">' + f.c_segle + '</div>';
 		txt += '<div class="popup-m"><a class="identify" title="Identify" onclick="modal(\'' + f.c_carrer_id + '\')"><i class="fa fa-info-circle pop"></i></a></div>';
@@ -590,8 +487,6 @@ function showInfo(evt) {
 	});
 
 	selectLayerSource.clear();
-
-	//$('#data').html('');
 
 	var features = window.map.getFeaturesAtPixel(
 		evt.pixel, {
@@ -613,48 +508,19 @@ function showInfo(evt) {
 		window.map.un('pointermove', highlight);
 		features = features[0];
 
-		/*
-		var featurething = new ol.Feature({
-			name: "Thing",
-				geometry: thing
-			});
-			vectorSource.addFeature(featurething);
-		*/
-
 		txt = buildtxt([features]);
 		selectLayerSource.addFeature(new ol.Feature({
 			name: 'thing',
 			geometry: features.getGeometry()
 		}));
 
-		//		console.log(evt.coordinate)
-		//		console.log(evt.pixel)
-
 		d = 100 / window.map.getView().getResolution();
-		//		console.log(d, window.map.getView().getResolution())
 		np = [evt.pixel[0], evt.pixel[1] - d];
-
 
 		coo = window.map.getCoordinateFromPixel(np);
 
-
-
-		//		window.map.getView().animate({
-		//			center: evt.coordinate, // coo, //evt.coordinate,
-		//			duration: 500,
-		//			zoom: 18,
-		//		});
-
-
-
-		//closew()
-		//$('#map_data').opacity(0)
 		$('#map_data').hide();
-		//$('#map_data').delay(1000).show(0);
-		//$('#map_data').css('top', ($(window).height() - np[1]) + 'px')
-		//$('#map_data').delay(500).fadeIn();
 		$('#map_data').fadeIn();
-
 		$('#map_data').css('left', evt.pixel[0]);
 		$('#map_data').css('top', evt.pixel[1])
 
@@ -890,9 +756,6 @@ function tableSync() {
 
 		s = window.layer.getSource().getFeatures();
 
-
-		//si el filtro es vacio entonces cojo de otra capa
-
 		$.each(s, function (i, ii) {
 			var e = ii.getProperties();
 			delete e['geometry'];
@@ -927,8 +790,6 @@ function fexists(url) {
 
 function carousel() {
 	$('#slick div[carrer]').each(function (i, ii) {
-		//console.log(i, $(ii).attr('carrer'));
-		//console.log(fcarrers['features'])
 		fcarrers['features'].forEach(function (x) {
 			if (x['properties']['c_carrer_id'] == $(ii).attr('carrer')) {
 				txt = ''
@@ -1001,9 +862,7 @@ function rowStyle(row, index) {
 		}
 	}
 	return {
-		css: {
-			//color: 'blue',
-		}
+		css: {}
 	}
 }
 
@@ -1020,10 +879,6 @@ function formatter(value, row, index, field) {
 
 function run() {
 	scroll();
-
-
-	//https://github.com/minhur/bootstrap-toggle
-
 	$('#toggle-one').bootstrapToggle({
 		size: 'mini',
 		on: 'on',
@@ -1091,7 +946,6 @@ $(window).on('resize', function () {
 
 $(document).ready(function () {
 	run();
-
 	$(window).trigger('resize');
 
 })
