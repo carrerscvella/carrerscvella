@@ -1,0 +1,16 @@
+.table th,
+.table td {
+	padding: 0.2rem;
+}
+
+.table-bordered th,
+.table-bordered td {
+	border: 0px;
+	border-top: 0px solid black;
+	font-size: 0.8em;
+}
+
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid black;
+}

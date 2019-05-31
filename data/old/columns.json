@@ -1,0 +1,198 @@
+[
+	{
+		"field": "c_codi_carrer",
+		"visible": true,
+		"sortable": true,
+		"title": "c_codi_carrer"
+    },
+	{
+		"field": "c_nom_carrer_actual",
+		"visible": true,
+		"sortable": true,
+		"title": "c_nom_carrer_actual"
+    },
+	{
+		"field": "c_nom_familiar",
+		"visible": false,
+		"sortable": true,
+		"title": "c_nom_familiar"
+    },
+	{
+		"field": "c_infraestructura",
+		"visible": true,
+		"sortable": true,
+		"title": "c_infraestructura"
+    },
+	{
+		"field": "c_denominacio",
+		"visible": true,
+		"sortable": true,
+		"title": "c_denominacio"
+    },
+	{
+		"field": "c_noms_que_atempten_contra_els_drets_humans",
+		"visible": true,
+		"sortable": true,
+		"title": "c_noms_que_atempten_contra_els_drets_humans"
+    },
+
+	{
+		"field": "c_institucio",
+		"visible": true,
+		"sortable": true,
+		"title": "c_institucio"
+    },
+	{
+		"field": "c_data_que_va_rebre_la_denominacio",
+		"visible": true,
+		"sortable": true,
+		"title": "c_data_que_va_rebre_la_denominacio"
+    },
+	{
+		"field": "cvia_d",
+		"visible": true,
+		"sortable": true,
+		"title": "cvia_d"
+    },
+	{
+		"field": "cvia_e",
+		"visible": true,
+		"sortable": true,
+		"title": "cvia_e"
+    },
+	{
+		"field": "c_fonts_emprades",
+		"visible": false,
+		"sortable": true,
+		"title": "c_fonts_emprades",
+		"search": false
+    },
+	{
+		"field": "c_mercat",
+		"visible": false,
+		"sortable": true,
+		"title": "c_mercat"
+    },
+	{
+		"field": "distric_d",
+		"visible": false,
+		"sortable": true,
+		"title": "distric_d"
+    },
+	{
+		"field": "c_carrer_nom",
+		"visible": false,
+		"sortable": true,
+		"title": "c_carrer_nom"
+    },
+	{
+		"field": "c_unnamed:_21",
+		"visible": false,
+		"sortable": true,
+		"title": "c_unnamed:_21"
+    },
+	{
+		"field": "c_segle",
+		"visible": false,
+		"sortable": true,
+		"title": "c_segle"
+    },
+
+	{
+		"field": "c_unnamed:_22",
+		"visible": false,
+		"sortable": true,
+		"title": "c_unnamed:_22"
+    },
+	{
+		"field": "c_unnamed:_23",
+		"visible": false,
+		"sortable": true,
+		"title": "c_unnamed:_23"
+    },
+	{
+		"field": "c_ofici",
+		"visible": false,
+		"sortable": true,
+		"title": "c_ofici"
+    },
+	{
+		"field": "c_edificacio",
+		"visible": false,
+		"sortable": true,
+		"title": "c_edificacio"
+    },
+	{
+		"field": "c_carrer_tipus",
+		"visible": false,
+		"sortable": true,
+		"title": "c_carrer_tipus"
+    },
+	{
+		"field": "nvia_e",
+		"visible": true,
+		"sortable": true,
+		"title": "nvia_e"
+    },
+	{
+		"field": "nvia_d",
+		"visible": false,
+		"sortable": true,
+		"title": "nvia_d"
+    },
+	{
+		"field": "c_etiquetes_relacionades_amb_el_nom_del_carrer",
+		"visible": false,
+		"sortable": true,
+		"title": "c_etiquetes_relacionades_amb_el_nom_del_carrer"
+    },
+	{
+		"field": "longitud",
+		"visible": false,
+		"sortable": true,
+		"title": "longitud"
+    },
+	{
+		"field": "c_carrer_id",
+		"visible": false,
+		"sortable": true,
+		"title": "c_carrer_id"
+    },
+	{
+		"field": "geometry",
+		"visible": false,
+		"sortable": true,
+		"title": "geometry"
+    },
+	{
+		"field": "c_explicacio_historica",
+		"visible": false,
+		"sortable": true,
+		"title": "c_explicacio_historica",
+		"search": false
+    },
+	{
+		"field": "c_barri",
+		"visible": false,
+		"sortable": true,
+		"title": "c_barri"
+    },
+	{
+		"field": "c_periode",
+		"visible": false,
+		"sortable": true,
+		"title": "c_periode"
+    },
+	{
+		"field": "c_codi_carrer_ine",
+		"visible": false,
+		"sortable": true,
+		"title": "c_codi_carrer_ine"
+    },
+	{
+		"field": "tvia_e",
+		"visible": false,
+		"sortable": true,
+		"title": "tvia_e"
+    }
+]

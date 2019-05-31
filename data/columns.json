@@ -1,0 +1,88 @@
+[
+	{
+		"field": "actions",
+		"visible": true,
+		"sortable": true,
+		"title": "",
+		"align": "center"
+    },
+	{
+		"field": "c_codi_carrer",
+		"visible": true,
+		"sortable": true,
+		"title": "codi carrer"
+    },
+	{
+		"field": "c_carrer_id",
+		"visible": false,
+		"sortable": true,
+		"title": "codi carrer intern"
+    },
+	{
+		"field": "c_barri",
+		"visible": false,
+		"sortable": true,
+		"title": "barri"
+    },
+	{
+		"field": "c_denominacio",
+		"visible": true,
+		"sortable": true,
+		"title": "via"
+    },
+	{
+		"field": "c_nom_carrer_actual",
+		"visible": true,
+		"sortable": true,
+		"title": "nom"
+    },
+	{
+		"field": "c_period",
+		"visible": false,
+		"sortable": true,
+		"title": "periode"
+    },
+	{
+		"field": "c_segle",
+		"visible": true,
+		"sortable": true,
+		"title": "segle"
+    },
+	{
+		"field": "c_data_que_va_rebre_la_denominacio",
+		"visible": true,
+		"sortable": true,
+		"title": "any",
+		"formatter": "formatter"
+    },
+	{
+		"field": "c_exp_historica_refos",
+		"visible": false,
+		"sortable": true,
+		"title": "descripció"
+    },
+	{
+		"field": "c_tipologia",
+		"visible": true,
+		"sortable": true,
+		"title": "tipologia"
+    },
+	{
+		"field": "c_subtipologia",
+		"visible": true,
+		"sortable": true,
+		"title": "subtipologia"
+    },
+	{
+		"field": "c_genere",
+		"visible": true,
+		"sortable": true,
+		"title": "gènere"
+    },
+	{
+		"field": "c_fonts_refos",
+		"visible": false,
+		"sortable": true,
+		"title": "fonts"
+    }
+]
