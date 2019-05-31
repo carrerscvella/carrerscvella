@@ -1,0 +1,47 @@
+
+
+/intro 
+botones
+imagenes moviendose
+texto hola
+
+
+/page carroussel
+estructura
+contenidos
+jump to...
+
+
+/mapa
+base
+popup més avall
+modal complet fixed en qualsevol pantalla
+els puntets de les linies no sempre es veuen
+mascara out
+
+
+/filter
+refilter all
+clean filter
+boton de deploy
+número de calles a la izquierda tambiñen
+
+set bound of selection
+
+
+/lista
+campos ocultos
+jump to map
+ver modal? en vez de deploy?
+
+
+
+
+
+
+
+
+
+
+
+

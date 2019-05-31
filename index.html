@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Ciutat Vella</title>
+
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<!--<link rel="shortcut icon" href="https://www.barcelona.cat/favicon.ico">-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,500,600,600i,900,900i" rel="stylesheet">
+
+
+	<script src="vendor/jquery-3.3.1.min.js"></script>
+	<script src="vendor/popper.min.js"></script>
+	<!--	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
+
+	<script src="vendor/jquery.scrollify.js"></script>
+	<script src="vendor/chroma.min.js"></script>
+	<script src="vendor/fuse.min.js"></script>
+	<script src="vendor/alasql/alasql.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick-theme.css" />-->
+
+	<link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+	<script src="vendor/bootstrap/bootstrap.js"></script>
+	<link href="vendor/bootstrap/bootstrap.css" rel="stylesheet">
+
+
+	<link href="vendor/toogle/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="vendor/toogle/bootstrap-toggle.min.js"></script>
+
+
+
+	<script src="vendor/ol/ol.js"></script>
+	<link href="vendor/ol/ol.css" rel="stylesheet">
+	<script src="js/greyscale.js"></script>
+
+	<!--
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<link href="vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
+-->
+
+	<script src="vendor/bootstrap-table/bootstrap-table.min.js"></script>
+	<link href="vendor/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
+	<link href="https://unpkg.com/bootstrap-table@1.14.1/dist/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet">
+
+	<script src="https://unpkg.com/bootstrap-table@1.14.1/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
+
+
+	<script src="js/app.js"></script>
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/table.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<section id="home">
+		<div class="container">
+			<div class="row cos">
+				<div class="col-md-6">
+					<h1>Nomenclàtor històric de Ciutat Vella</h1>
+					<h2>Mapa de l'origen dels noms dels carrers del districte de Ciutat Vella</h2>
+
+				</div>
+				<div class="col-md-6">
+					<p class="l i">A Ciutat Vella, hi ha més de 600 carrers que amaguen una història diferent darrere del seu nom. Alguns carrers porten el nom de famílies, oficis i llocs. Altres tenen nom d'home o de dona, de militar o de religiós. Carrers que van ser nombrats en l'època medieval i alguns que ho han estat més recentment. <br> Aquest nomènclator de Ciutat Vella pemet consultar l'explicació històrica de l'origen dels carrers del districte, filtrant-los segons el barri, el període històric o la temàtica relacionada amb el seu nom.
+					</p>
+					<div class="button" onclick="$.scrollify.move(2)">consulta el mapa</div>
+					<div class="button" onclick="$.scrollify.move(5)">descarrega les dades</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section id="props">
+		<div class="container slickc">
+			<div id="slick">
+
+				<div carrer="571">
+				</div>
+
+				<div carrer="595">
+				</div>
+
+				<div carrer="549">
+				</div>
+
+				<div carrer="653">
+				</div>
+
+				<div carrer="203">
+				</div>
+
+				<div carrer="296">
+				</div>
+
+				<div carrer="555">
+				</div>
+
+				<div carrer="314">
+
+				</div>
+
+				<div carrer="263">
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section id="map" class="interstitial">
+		<div id="zoom-map"></div>
+		<div id="map_data">
+			<div class="content"></div>
+
+		</div>
+
+	</section>
+
+	<section id="flexible" class="inactive"></section>
+
+
+	<!--<section id="search" class="row interstitial"></section>-->
+	<section id="filters" class="interstitial">
+		<div class="filtra">
+			<div id="b_filtra" onclick="showFilters()"><i class="fas fa-sliders-h"></i> <span>Filtra els carrers</span></div>
+			<div id="n_carrers"></div>
+
+			<div id="syncselect">
+				<div class="icon"><i class="fas fa-table"></i> <span onclick="$.scrollify.move(4)">Consulta la taula de dades </span>
+					<div id="toogle-sync"><input id="toggle-one" type="checkbox"> sincronitza </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="table_s">
+		<!--
+<input type="checkbox" class="jtoggler">
+
+<input type="checkbox" checked data-toggle="toggle">
+-->
+
+
+		<table id="table" class="display"></table>
+	</section>
+
+	<section id="share">
+		<div class="container centered">
+
+			<h1>Descarrega't les dades</h1>
+
+			<p class="pa">A continuació, es poden descarregar les dades fruit de l'estudi històric del nomenclàtor dels carrers de Ciutat Vella en formats reutilitzables (csv i json).</p>
+
+			<div class="row">
+				<div class="download">
+					<a href="data/carrers.csv"> <i class="fas fa-file-csv"></i></a>
+				</div>
+				<div class="download">
+					<a href="data/carrers.geojson"> <i class="fas fa-map-marked-alt"></i> </a>
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</section>
+
+	<section id="foot">
+		<div class="container centered">
+
+			<h1>Crèdits</h1>
+
+			<h3>Un projecte promogut per:</h3>
+			<p>Districte de Ciutat Vella, Ajuntament de Barcelona</p>
+			<h4>
+				<a href=""><img style="height:50px" src="img/Llimes_Districtes_Dte%201.png"></a>
+			</h4>
+
+			<h3>Estudi històric:</h3>
+			<p>Tot Història Associació Cultural</p>
+			<h4>
+				<a href="http://tothistoria.cat/" target="_blank"><img style="height:150px" src="img/tothistoria.jpg"></a>
+			</h4>
+
+			<h3>Tractament, publicació de dades i cartografia interactiva:</h3>
+			<p>300.000 Km/s</p>
+			<h4>
+				<a href="http://300000kms.net/" target="_blank"><img style="height:50px" src="img/300000kms.png"></a>
+			</h4>
+
+		</div>
+
+	</section>
+
+
+
+	<div id="modal">
+		<div id="inside">
+			<div id="close"><i class="far fa-times-circle"></i></div>
+			<div id="content"></div>
+		</div>
+	</div>
+
+	<a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
+
+</body>
+
+</html>
