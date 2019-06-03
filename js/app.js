@@ -789,11 +789,8 @@ function carousel() {
 		fcarrers['features'].forEach(function (x) {
 			if (x['properties']['c_carrer_id'] == $(ii).attr('carrer')) {
 				txt = ''
-				console.log(fexists('pic/' + x['properties']['c_carrer_id'] + '.png'))
 				if (fexists('pic/' + x['properties']['c_carrer_id'] + '.png')) {
 					txt += '<img src="pic/' + x['properties']['c_carrer_id'] + '.png">'
-					console.log('gooo')
-
 				} else {
 					txt += '<img src="pic/none.png">'
 				}
