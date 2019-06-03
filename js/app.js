@@ -766,36 +766,34 @@ function tableSync() {
 				tf.push(e);
 			}
 		});
-
 	}
 
 	$("#table").bootstrapTable("load", JSON.parse(JSON.stringify(tf)));
 	$.scrollify.update();
-
-
 }
+
 
 function fexists(url) {
-	$.ajax({
-		url: url,
-		type: 'HEAD',
-		error: function () {
-			return false
-		},
-		success: function () {
-			return true
-		}
-	});
+	var result = false
+	$('body').append('<img id="imtest" src="' + url + '"/>');
+	if ($('#imtest').width != 0) {
+		result = true
+	}
+	$('#imtest').remove()
+	return result
 }
+
 
 function carousel() {
 	$('#slick div[carrer]').each(function (i, ii) {
 		fcarrers['features'].forEach(function (x) {
 			if (x['properties']['c_carrer_id'] == $(ii).attr('carrer')) {
 				txt = ''
-
+				console.log(fexists('pic/' + x['properties']['c_carrer_id'] + '.png'))
 				if (fexists('pic/' + x['properties']['c_carrer_id'] + '.png')) {
 					txt += '<img src="pic/' + x['properties']['c_carrer_id'] + '.png">'
+					console.log('gooo')
+
 				} else {
 					txt += '<img src="pic/none.png">'
 				}
